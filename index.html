@@ -40,7 +40,7 @@
 
 <!-- Performance -->
 <link rel="preload" as="image" href="images/pink-castle-rainbow-fairytale-backdrop.webp" fetchpriority="high" data-strip-inline>
-<link rel="preload" as="image" href="images/zoe-llaine-simeon-baptism-portrait.webp" data-strip-inline>
+<link rel="preload" as="image" href="images/zoe-llaine-simeon-baptism-hero.webp" data-strip-inline>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700&amp;family=Berkshire+Swash&amp;display=swap" rel="stylesheet">
@@ -241,7 +241,7 @@ a{ color:inherit; }
 
 /* ============ Royal feast strip (Jollibee treats) ============ */
 .ticker{ overflow:hidden; background:linear-gradient(90deg,var(--pink),var(--lav),var(--sky),var(--mint),var(--butter)); border-block:3px solid var(--gold); padding:.5rem 0; color:var(--plum); }
-.ticker__track{ display:flex; width:max-content; animation:scroll 36s linear infinite; }
+.ticker__track{ display:flex; width:max-content; animation:scroll 24s linear infinite; }
 .ticker:hover .ticker__track{ animation-play-state:paused; }
 .ticker ul{ display:flex; flex:none; gap:2.2rem; padding-right:2.2rem; }
 .ticker li{ display:inline-flex; align-items:center; gap:.55rem; font-family:var(--font-display); font-size:1.25rem; white-space:nowrap; }
@@ -351,6 +351,24 @@ a{ color:inherit; }
 .swatches{ display:flex; justify-content:center; gap:.5rem; margin-top:.9rem; }
 .swatches span{ width:1.7rem; height:1.7rem; border-radius:50%; background:var(--c); border:2px solid #fff; box-shadow:0 2px 0 rgba(74,34,96,.2); }
 
+/* ============ Godparents ============ */
+.godparents{ padding:1rem 0 5rem; text-align:center; background:linear-gradient(180deg,var(--pink-2) 0%,var(--lav-2) 100%); }
+.god-grid{ display:grid; gap:1.6rem; width:min(100%,54rem); margin:2.2rem auto 0; }
+.god-card{
+  background:var(--parch); border:3px solid var(--gold); border-radius:18px; padding:1.5rem 1.6rem 1.6rem; text-align:left;
+  box-shadow:inset 0 0 0 4px var(--parch),inset 0 0 0 6px var(--lav),0 7px 0 rgba(74,34,96,.16);
+}
+.god-card h3{ font-family:var(--font-display); font-weight:400; font-size:1.6rem; color:var(--red); text-align:center; margin-bottom:.9rem; }
+.god-list li{ padding:.34rem .2rem; border-bottom:1px dashed rgba(74,34,96,.18); font-weight:600; }
+.god-list li:last-child{ border-bottom:0; }
+.god-list li.principal{
+  display:flex; flex-direction:column; gap:.05rem; margin-bottom:.3rem; padding:.5rem .6rem .55rem; border-radius:10px;
+  background:linear-gradient(100deg,var(--gold-light),var(--butter)); border-bottom:0;
+  font-family:var(--font-display); font-size:1.3rem; line-height:1.15; color:var(--red-deep);
+  box-shadow:0 3px 0 rgba(169,116,26,.35);
+}
+.god-list li.principal .tag{ order:-1; font-family:var(--font-body); font-weight:700; font-size:.68rem; letter-spacing:.05em; text-transform:uppercase; color:var(--violet); }
+
 /* ============ Sign-off + footer ============ */
 .seeyou{ --edge:var(--pink-2); padding:4.6rem 0 4.4rem; background:linear-gradient(180deg,var(--pink-2),var(--lav)); }
 .seeyou__in{ display:grid; gap:1.6rem; align-items:center; justify-items:center; text-align:center; }
@@ -431,6 +449,7 @@ a{ color:inherit; }
   .sign__name{ font-size:clamp(2.4rem,5.4vw,3.8rem); }
   .sign__name br{ display:none; }
   .dress-list{ grid-template-columns:1fr 1fr; width:min(100%,50rem); }
+  .god-grid{ grid-template-columns:1fr 1fr; align-items:start; }
   .code{ display:grid; align-content:center; }
   .seeyou__in{ grid-template-columns:1fr auto; text-align:left; justify-items:start; gap:3rem; width:min(100% - 2rem,50rem); }
   .seeyou__in > div{ justify-self:center; text-align:center; }
@@ -582,6 +601,7 @@ a{ color:inherit; }
       <a href="#schedule" title="Date, time and venue maps">Schedule</a>
       <a href="#gift-ideas" title="Gift idea for Zoe">Gifts</a>
       <a href="#dress-code" title="What to wear">Dress code</a>
+      <a href="#godparents" title="Zoe's Ninong and Ninang">Godparents</a>
     </nav>
   </div>
 </header>
@@ -603,8 +623,8 @@ a{ color:inherit; }
         <svg class="spark" style="right:5%;top:70%;color:#fff;animation-delay:-.4s;width:1.1rem;height:1.1rem" focusable="false"><use href="#i-star4"/></svg>
       </div>
       <svg class="bee-fly" aria-hidden="true" focusable="false"><use href="#i-bee"/></svg>
-      <img class="hero__zoe" src="images/zoe-llaine-simeon-baptism-portrait.webp" width="900" height="1005"
-           alt="Baby Zoe smiling in a white lace baptismal dress, with two little pigtails"
+      <img class="hero__zoe" src="images/zoe-llaine-simeon-baptism-hero.webp" width="900" height="960"
+           alt="Baby Zoe smiling in a white lace baptismal dress and a pink and cream floral headband"
            fetchpriority="high" decoding="async" data-anim="zoom-in" data-d="500">
       <div class="hero__title">
         <p class="kicker" data-anim="pop" data-d="100">You are invited!</p>
@@ -634,21 +654,17 @@ a{ color:inherit; }
   </section>
 
   <!-- ============ Royal feast strip ============ -->
-  <div class="ticker" data-anim="wipe" role="group" aria-label="The royal feast: fried chicken, burgers, spaghetti, peach mango pie, fries and sundaes">
+  <div class="ticker" data-anim="wipe" role="group" aria-label="The royal feast: fried chicken, spaghetti, fries and sundaes">
     <div class="ticker__track" aria-hidden="true">
       <ul>
         <li><svg focusable="false"><use href="#i-chicken"/></svg>Fried chicken</li>
-        <li><svg focusable="false"><use href="#i-burger"/></svg>Burgers</li>
         <li><svg focusable="false"><use href="#i-spaghetti"/></svg>Spaghetti</li>
-        <!-- <li><svg focusable="false"><use href="#i-pie"/></svg>Peach mango pie</li> -->
         <li><svg focusable="false"><use href="#i-fries"/></svg>Fries</li>
         <li><svg focusable="false"><use href="#i-sundae"/></svg>Sundaes</li>
       </ul>
       <ul>
         <li><svg focusable="false"><use href="#i-chicken"/></svg>Fried chicken</li>
-        <li><svg focusable="false"><use href="#i-burger"/></svg>Burgers</li>
         <li><svg focusable="false"><use href="#i-spaghetti"/></svg>Spaghetti</li>
-        <li><svg focusable="false"><use href="#i-pie"/></svg>Peach mango pie</li>
         <li><svg focusable="false"><use href="#i-fries"/></svg>Fries</li>
         <li><svg focusable="false"><use href="#i-sundae"/></svg>Sundaes</li>
       </ul>
@@ -833,6 +849,56 @@ a{ color:inherit; }
     </div>
   </section>
 
+  <!-- ============ Godparents ============ -->
+  <section class="godparents" id="godparents" aria-labelledby="godparents-title">
+    <div class="wrap">
+      <div class="sign-small plaque plaque--plum" data-anim="swing"><div class="plaque__inner">
+        <h2 id="godparents-title">Godparents</h2>
+      </div></div>
+      <p class="schedule__lead" data-anim="rise" data-d="300">With heartfelt thanks to Zoe's Ninong and Ninang.</p>
+
+      <div class="god-grid">
+        <article class="god-card" data-anim="slide-l" data-d="150">
+          <h3>GodFathers</h3>
+          <ul class="god-list">
+            <li class="principal"><span class="tag"></span>Wilmor Bello</li>
+              <li>Aldrin Altes</li>
+              <li>Alfred Febian</li>
+              <li>Alfred Sieteriales</li>
+              <li>Allen Austria</li>
+              <li>Amiel Pagiua</li>
+              <li>Charles Espanol</li>
+              <li>Dan Cervantes</li>
+              <li>Jaymar Pablo</li>
+              <li>Joshua Garcia</li>
+              <li>Kiel delos Santos</li>
+              <li>Kurt Asidao</li>
+              <li>Peter Garcia</li>
+              <li>Red Magluyan</li>
+              <li>Williard Nicolas</li>
+          </ul>
+        </article>
+        <article class="god-card" data-anim="slide-r" data-d="300">
+          <h3>GodMothers</h3>
+          <ul class="god-list">
+            <li class="principal"><span class="tag"></span>Ellaine Simeon</li>
+              <li>Carla Samudio</li>
+              <li>Jamica Roxas</li>
+              <li>Jheng de Jesus</li>
+              <li>Joiz Mariano</li>
+              <li>Jestine Perez</li>
+              <li>Kolin Rivera</li>
+              <li>Lalaine Desirey</li>
+              <li>Lorie Llaine</li>
+              <li>Nia Carpio</li>
+              <li>Nicole Talce</li>
+              <li>Samantha Ralavera</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
   <!-- ============ Sign-off ============ -->
   <section class="seeyou has-doodles cloudtop" aria-labelledby="seeyou-title">
     <div class="doodles" aria-hidden="true">
@@ -847,11 +913,8 @@ a{ color:inherit; }
       </div>
       <figure class="mirror" data-anim="float-up" data-d="200">
         <svg class="mirror__crown" aria-hidden="true" focusable="false"><use href="#i-crown"/></svg>
-        <picture>
-          <source media="(prefers-reduced-motion: reduce)" srcset="images/zoe-llaine-simeon-waving-still.webp" type="image/webp">
-          <img src="images/zoe-llaine-simeon-waving.gif" width="440" height="500" loading="lazy" decoding="async"
-               alt="Baby Zoe in her white lace dress waving both hands in front of a rainbow and a pink castle">
-        </picture>
+        <img src="images/zoe-llaine-simeon-seeyou-portrait.webp" width="760" height="878" loading="lazy" decoding="async"
+             alt="Baby Zoe in a flower crown headband and white lace baptismal gown, looking down sweetly">
       </figure>
     </div>
   </section>
@@ -864,6 +927,7 @@ a{ color:inherit; }
       <a href="#schedule">Date and venue maps</a>
       <a href="#gift-ideas">Gift idea</a>
       <a href="#dress-code">Dress code</a>
+      <a href="#godparents">Godparents</a>
     </nav>
     <small>Made with love for Zoe Llaine M. Simeon's Baptism, Oct 4, 2026. Jollibee FairyTale Land.</small>
   </div>
